@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573427618789",
+    "project_id": "webbinar-app",
+    "storage_bucket": "webbinar-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573427618789:android:448693ea7f14eb140cd50c",
+        "android_client_info": {
+          "package_name": "com.example.webinar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlso01vGX8w5mt1-acO7NGDa61dhJh158"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
