@@ -1,6 +1,8 @@
 # [WEBINAR] Ngoding Online Bareng
 
-![Banner](banner.png)
+<p align="center">
+  <img src="banner.png" alt="Banner" width="25%" />
+</p>
 
 ## 🧩 Prerequisite
 
