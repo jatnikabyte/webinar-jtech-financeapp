@@ -90,13 +90,7 @@ class TransactionFormView extends StatelessWidget {
                           items: controller.categories.map((category) {
                             return DropdownMenuItem(
                               value: category.id,
-                              child: Row(
-                                children: [
-                                  Text(category.icon),
-                                  const SizedBox(width: 8),
-                                  Text(category.name),
-                                ],
-                              ),
+                              child: Row(children: [Text(category.name)]),
                             );
                           }).toList(),
                           decoration: const InputDecoration(

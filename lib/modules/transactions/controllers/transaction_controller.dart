@@ -61,7 +61,7 @@ class TransactionController extends GetxController {
     if (!formKey.currentState!.saveAndValidate()) {
       Get.snackbar(
         'Error',
-        'Field cannot be empty',
+        'Kolom tidak boleh kosong',
         snackPosition: SnackPosition.BOTTOM,
       );
       return;
