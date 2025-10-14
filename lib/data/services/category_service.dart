@@ -7,7 +7,7 @@ class CategoryService {
 
   CollectionReference get _categoriesRef => _firestore.collection('categories');
 
-  Stream<List<CategoryModel>> getCategories() {
+  Stream<List<CategoryModel>> getAll() {
     return _categoriesRef
         .orderBy('createdAt', descending: true)
         .snapshots()
@@ -23,17 +23,17 @@ class CategoryService {
         );
   }
 
-  Future<void> addCategory(CategoryModel category) async {
+  Future<void> add(CategoryModel category) async {
     await _categoriesRef.add(category.toJson());
   }
 
-  Future<void> updateCategory(CategoryModel category) async {
+  Future<void> update(CategoryModel category) async {
     if (category.id != null) {
       await _categoriesRef.doc(category.id).update(category.toJson());
     }
   }
 
-  Future<void> deleteCategory(String categoryId) async {
+  Future<void> delete(String categoryId) async {
     await _categoriesRef.doc(categoryId).delete();
   }
 }

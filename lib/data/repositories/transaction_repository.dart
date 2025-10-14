@@ -6,19 +6,19 @@ import '../services/transaction_service.dart';
 class TransactionRepository {
   final TransactionService _transactionService = Get.find<TransactionService>();
 
-  Stream<List<TransactionModel>> getTransactions() {
-    return _transactionService.getTransactions();
+  Stream<List<TransactionModel>> getAll() {
+    return _transactionService.getAll();
   }
 
-  Future<void> addTransaction(TransactionModel transaction) async {
-    await _transactionService.addTransaction(transaction);
+  Future<void> add(TransactionModel transaction) async {
+    await _transactionService.add(transaction);
   }
 
-  Future<void> updateTransaction(TransactionModel transaction) async {
-    await _transactionService.updateTransaction(transaction);
+  Future<void> update(TransactionModel transaction) async {
+    await _transactionService.update(transaction);
   }
 
-  Future<void> deleteTransaction(String transactionId) async {
-    await _transactionService.deleteTransaction(transactionId);
+  Future<void> delete(String transactionId) async {
+    await _transactionService.delete(transactionId);
   }
 }

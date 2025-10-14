@@ -8,7 +8,7 @@ class TransactionService {
   CollectionReference get _transactionsRef =>
       _firestore.collection('transactions');
 
-  Stream<List<TransactionModel>> getTransactions() {
+  Stream<List<TransactionModel>> getAll() {
     return _transactionsRef
         .orderBy('createdAt', descending: true)
         .snapshots()
@@ -24,17 +24,17 @@ class TransactionService {
         );
   }
 
-  Future<void> addTransaction(TransactionModel transaction) async {
+  Future<void> add(TransactionModel transaction) async {
     await _transactionsRef.add(transaction.toJson());
   }
 
-  Future<void> updateTransaction(TransactionModel transaction) async {
+  Future<void> update(TransactionModel transaction) async {
     if (transaction.id != null) {
       await _transactionsRef.doc(transaction.id).update(transaction.toJson());
     }
   }
 
-  Future<void> deleteTransaction(String transactionId) async {
+  Future<void> delete(String transactionId) async {
     await _transactionsRef.doc(transactionId).delete();
   }
 }

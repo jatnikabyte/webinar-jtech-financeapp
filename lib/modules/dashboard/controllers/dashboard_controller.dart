@@ -20,7 +20,7 @@ class DashboardController extends GetxController {
 
   void loadDashboardData() {
     isLoading.value = true;
-    _transactionRepository.getTransactions().listen(
+    _transactionRepository.getAll().listen(
       (data) {
         transactions.value = data;
         calculateTotals();

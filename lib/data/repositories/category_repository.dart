@@ -6,19 +6,19 @@ import '../services/category_service.dart';
 class CategoryRepository {
   final CategoryService _categoryService = Get.find<CategoryService>();
 
-  Stream<List<CategoryModel>> getCategories() {
-    return _categoryService.getCategories();
+  Stream<List<CategoryModel>> getAll() {
+    return _categoryService.getAll();
   }
 
-  Future<void> addCategory(CategoryModel category) async {
-    await _categoryService.addCategory(category);
+  Future<void> add(CategoryModel category) async {
+    await _categoryService.add(category);
   }
 
-  Future<void> updateCategory(CategoryModel category) async {
-    await _categoryService.updateCategory(category);
+  Future<void> update(CategoryModel category) async {
+    await _categoryService.update(category);
   }
 
-  Future<void> deleteCategory(String categoryId) async {
-    await _categoryService.deleteCategory(categoryId);
+  Future<void> delete(String categoryId) async {
+    await _categoryService.delete(categoryId);
   }
 }

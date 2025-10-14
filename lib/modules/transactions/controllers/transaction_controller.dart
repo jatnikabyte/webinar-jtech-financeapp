@@ -26,7 +26,7 @@ class TransactionController extends GetxController {
 
   void loadTransactions() {
     isLoading.value = true;
-    _transactionRepository.getTransactions().listen(
+    _transactionRepository.getAll().listen(
       (data) {
         transactions.value = data;
         isLoading.value = false;
@@ -43,7 +43,7 @@ class TransactionController extends GetxController {
   }
 
   void loadCategories() {
-    _categoryRepository.getCategories().listen(
+    _categoryRepository.getAll().listen(
       (data) {
         categories.value = data;
       },
@@ -68,7 +68,6 @@ class TransactionController extends GetxController {
     }
     try {
       var data = formKey.currentState!.value;
-
       final categoryName = categories
           .firstWhereOrNull((cat) => cat.id == data['categoryId'])
           ?.name;
@@ -82,7 +81,7 @@ class TransactionController extends GetxController {
         notes: data['notes'],
         createdAt: DateTime.now(),
       );
-      await _transactionRepository.addTransaction(transaction);
+      await _transactionRepository.add(transaction);
       Get.back();
       Get.snackbar(
         'Success',
@@ -111,7 +110,7 @@ class TransactionController extends GetxController {
         notes: data['notes'],
       );
 
-      await _transactionRepository.updateTransaction(updatedTransaction);
+      await _transactionRepository.update(updatedTransaction);
       Get.back();
       Get.snackbar(
         'Success',
@@ -130,7 +129,7 @@ class TransactionController extends GetxController {
 
   Future<void> deleteTransaction(String transactionId) async {
     try {
-      await _transactionRepository.deleteTransaction(transactionId);
+      await _transactionRepository.delete(transactionId);
       Get.snackbar(
         'Success',
         'Transaksi berhasil dihapus',
