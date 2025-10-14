@@ -19,8 +19,23 @@ Bagi yang ikut live coding saat webinar, pastikan kamu sudah menyiapkan hal-hal 
   - Gemini Code Assist
 - ⚙️ **Node.js (NPM)**  
   Pastikan Node.js sudah terinstall di sistem kamu.
+- 🧩 **Step by step cara install Node. js, Flutter dan Android Studio**  
+  - By Chat Gpt : https://chatgpt.com/share/68ed81a8-c230-8003-bb6e-2b38ef597346
+  - Vided YT : https://youtu.be/okhQ2GWGRAI?si=oSNubS5DcKbsAxu3
+- Package atau depedencies yang diperlukan
+  firebase_core,cloud_firestore,flutter_form_builder,form_builder_validators,get,intl
+- Konfigurasi firebase project (Global)
+  ```bash 
+  npm install -g firebase-tools 
+  firebase login
+  firebase init
+  ```
+- Konfigurasi FlutterFire Cli (Global)
+  ```bash 
+  dart pub global activate flutterfire_cli
+  ```
 
-## 🧾 Struktur Data
+## 🧾 Struktur Data (Models)
 
 ### 💰 Transaction Data
 ```json
