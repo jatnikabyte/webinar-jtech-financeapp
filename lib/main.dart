@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webinar/config/theme.dart';
+import 'package:webinar/core/config/theme.dart';
 import 'package:webinar/firebase_options.dart';
 import 'package:webinar/routes/route_pages.dart';
 

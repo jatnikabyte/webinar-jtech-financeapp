@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
@@ -55,6 +56,10 @@ class TransactionFormView extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'amount',
                           keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter
+                                .digitsOnly, // hanya angka
+                          ],
                           decoration: const InputDecoration(hintText: 'Total'),
                           validator: FormBuilderValidators.required(),
                         ),

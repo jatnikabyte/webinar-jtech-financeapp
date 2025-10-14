@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webinar/core/helpers/transaction_helpers.dart';
 import 'package:webinar/core/utils/number_util.dart';
+import 'package:webinar/modules/category/views/category_list_view.dart';
 import 'package:webinar/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:webinar/modules/transactions/views/transaction_list_view.dart';
 
@@ -21,17 +22,20 @@ class DashboardView extends StatelessWidget {
           Stack(children: [_buildWave(), _buildSummary()]),
           SizedBox(height: 20),
           _buildRecentTransactions(),
-          _buildButton(),
+          SizedBox(height: 20),
+          _buildButtonAddTransaction(),
+          SizedBox(height: 10),
+          _buildButtonAddCategory(),
         ],
       ),
     );
   }
 
-  Widget _buildButton() {
+  Widget _buildButtonAddTransaction() {
     return GestureDetector(
       onTap: () => Get.to(TransactionListView()),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Container(
           height: 50,
           width: Get.width,
@@ -67,11 +71,51 @@ class DashboardView extends StatelessWidget {
     );
   }
 
+  Widget _buildButtonAddCategory() {
+    return GestureDetector(
+      onTap: () => Get.to(CategoryListView()),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          height: 50,
+          width: Get.width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.blue.shade300],
+            ),
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromRGBO(0, 0, 0, 0.15),
+                blurRadius: 15,
+                spreadRadius: 0,
+                offset: Offset(0, 5),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.add, color: Colors.white),
+              Text(
+                'Tambah Kategori',
+                style: Get.theme.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildRecentTransactions() {
     return Obx(
       () => CardWidget(
         child: SizedBox(
-          height: 500,
+          height: 450,
           child: controller.transactions.isEmpty
               ? NoTransactionYetWidget()
               : Column(
