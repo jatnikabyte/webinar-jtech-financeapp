@@ -23,7 +23,9 @@ Bagi yang ikut live coding saat webinar, pastikan kamu sudah menyiapkan hal-hal 
   - By Chat Gpt : https://chatgpt.com/share/68ed81a8-c230-8003-bb6e-2b38ef597346
   - Vided YT : https://youtu.be/okhQ2GWGRAI?si=oSNubS5DcKbsAxu3
 - Package atau depedencies yang diperlukan
+  ```bash
   firebase_core,cloud_firestore,flutter_form_builder,form_builder_validators,get,intl
+  ```
 - Konfigurasi firebase project (Global)
   ```bash 
   npm install -g firebase-tools 
@@ -33,6 +35,10 @@ Bagi yang ikut live coding saat webinar, pastikan kamu sudah menyiapkan hal-hal 
 - Konfigurasi FlutterFire Cli (Global)
   ```bash 
   dart pub global activate flutterfire_cli
+  ```
+- Konfigurasi FlutterFire Cli (Di setiap project baru)
+  ```bash 
+  flutterfire configure
   ```
 
 ## 🧾 Struktur Data (Models)
