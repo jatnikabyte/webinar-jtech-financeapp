@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-class DateUtil {
+class Utils {
   static String formatDate(DateTime? date, {String format = 'dd/MM/yyyy'}) {
     if (date == null) return '-';
     return DateFormat(format).format(date);
@@ -15,6 +15,14 @@ class DateUtil {
     } catch (_) {
       return null;
     }
+  }
+
+  static formatCurrency(double value) {
+    return NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    ).format(value);
   }
 
   static String timeAgo(DateTime date) {

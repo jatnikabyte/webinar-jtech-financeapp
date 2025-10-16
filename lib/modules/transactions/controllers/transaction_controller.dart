@@ -100,6 +100,14 @@ class TransactionController extends GetxController {
 
   Future<void> updateTransaction(TransactionModel transaction) async {
     try {
+      if (!formKey.currentState!.saveAndValidate()) {
+        Get.snackbar(
+          'Error',
+          'Kolom tidak boleh kosong',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        return;
+      }
       var data = formKey.currentState!.value;
       final updatedTransaction = transaction.copyWith(
         categoryId: data['categoryId'],
@@ -109,7 +117,6 @@ class TransactionController extends GetxController {
         date: data['date'],
         notes: data['notes'],
       );
-
       await _transactionRepository.update(updatedTransaction);
       Get.back();
       Get.snackbar(

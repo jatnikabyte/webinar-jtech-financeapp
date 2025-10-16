@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import 'package:webinar/data/models/category_model.dart';
-import 'package:webinar/modules/category/controllers/category_controller.dart';
+import '../../../data/models/category_model.dart';
+import '../../../modules/category/controllers/category_controller.dart';
+import '../../../widgets/button_widget.dart';
 
 import '../../../widgets/card_widget.dart';
 
@@ -14,7 +15,7 @@ class CategoryFormView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CategoryController>();
+    final controller = Get.put(CategoryController());
     final isEdit = category != null;
 
     return Scaffold(
@@ -48,25 +49,16 @@ class CategoryFormView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          Padding(
-            padding: EdgeInsetsGeometry.all(20),
-            child: SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (isEdit) {
-                    controller.updateCategory(category!);
-                  } else {
-                    controller.addCategory();
-                  }
-                },
-                child: Text(
-                  'Simpan Kategori',
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
+          ButtonWidget(
+            icon: Icons.save,
+            title: 'Simpan Kategori',
+            onTap: () {
+              if (isEdit) {
+                controller.updateCategory(category!);
+              } else {
+                controller.addCategory();
+              }
+            },
           ),
         ],
       ),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webinar/core/helpers/transaction_helpers.dart';
-import 'package:webinar/core/utils/number_util.dart';
-import 'package:webinar/modules/transactions/controllers/transaction_controller.dart';
-import 'package:webinar/modules/transactions/views/transaction_form_view.dart';
-import 'package:webinar/widgets/card_widget.dart';
+import '../../../core/helpers/transaction_helpers.dart';
 
-import '../../../core/utils/date_util.dart';
+import '../../../modules/transactions/controllers/transaction_controller.dart';
+import '../../../modules/transactions/views/transaction_form_view.dart';
+import '../../../widgets/box_icon_widget.dart';
+import '../../../widgets/card_widget.dart';
+
+import '../../../core/utils/utils.dart';
 import '../../../widgets/no_transaction_yet_widget.dart';
 
 class TransactionListView extends StatelessWidget {
@@ -21,11 +22,9 @@ class TransactionListView extends StatelessWidget {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
         }
-
         if (controller.transactions.isEmpty) {
           return NoTransactionYetWidget();
         }
-
         return ListView.builder(
           padding: EdgeInsets.only(top: 18),
           itemCount: controller.transactions.length,
@@ -38,18 +37,14 @@ class TransactionListView extends StatelessWidget {
                 horizontalTitleGap: 10,
                 minLeadingWidth: 0,
                 minVerticalPadding: 0,
-                leading: Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: TransactionHelpers.backgroundColor(transaction.type),
-                    borderRadius: BorderRadius.circular(10),
+                leading: BoxIconWidget(
+                  backgroundColor: TransactionHelpers.backgroundColor(
+                    transaction.type,
                   ),
-                  child: Icon(
-                    TransactionHelpers.icon(transaction.type),
-                    color: TransactionHelpers.color(transaction.type),
-                  ),
+                  color: TransactionHelpers.color(transaction.type),
+                  icon: TransactionHelpers.icon(transaction.type),
                 ),
+
                 title: Text(
                   transaction.categoryName,
                   style: Get.textTheme.titleMedium,
@@ -64,7 +59,7 @@ class TransactionListView extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     Text(
-                      DateUtil.formatDate(transaction.date),
+                      Utils.formatDate(transaction.date),
                       style: Get.textTheme.bodySmall?.copyWith(
                         color: Colors.grey,
                       ),
@@ -76,7 +71,7 @@ class TransactionListView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      NumberUtil.formatCurrency(transaction.amount),
+                      Utils.formatCurrency(transaction.amount),
                       style: Get.textTheme.titleMedium?.copyWith(
                         color: TransactionHelpers.color(transaction.type),
                       ),
@@ -128,7 +123,7 @@ class TransactionListView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           controller.clearForm();
-          Get.to(() => const TransactionFormView());
+          Get.to(() => TransactionFormView());
         },
         child: const Icon(Icons.add),
       ),

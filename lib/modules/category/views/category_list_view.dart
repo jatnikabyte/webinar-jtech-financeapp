@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webinar/modules/category/controllers/category_controller.dart';
-import 'package:webinar/modules/category/views/category_form_view.dart';
+import '../../../modules/category/controllers/category_controller.dart';
+import '../../../modules/category/views/category_form_view.dart';
 
 import '../../../widgets/card_widget.dart';
 import '../../../widgets/no_transaction_yet_widget.dart';

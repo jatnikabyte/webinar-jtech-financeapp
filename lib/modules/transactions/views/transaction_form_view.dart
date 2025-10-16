@@ -4,19 +4,21 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:webinar/core/enums/transaction_types.dart';
-import 'package:webinar/data/models/transaction_model.dart';
-import 'package:webinar/modules/transactions/controllers/transaction_controller.dart';
-import 'package:webinar/widgets/card_widget.dart';
+import '../../../core/enums/transaction_types.dart';
+import '../../../data/models/transaction_model.dart';
+import '../../../modules/transactions/controllers/transaction_controller.dart';
+import '../../../widgets/button_widget.dart';
+import '../../../widgets/card_widget.dart';
 
 class TransactionFormView extends StatelessWidget {
   final TransactionModel? transaction;
 
-  const TransactionFormView({super.key, this.transaction});
+  TransactionFormView({super.key, this.transaction});
+  late final selectedDate = (transaction?.date ?? DateTime.now()).obs;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<TransactionController>();
+    final controller = Get.put(TransactionController());
     final isEdit = transaction != null;
 
     return Scaffold(
@@ -111,25 +113,16 @@ class TransactionFormView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          Padding(
-            padding: EdgeInsetsGeometry.all(20),
-            child: SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (isEdit) {
-                    controller.updateTransaction(transaction!);
-                  } else {
-                    controller.addTransaction();
-                  }
-                },
-                child: Text(
-                  'Simpan Transaksi',
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
+          ButtonWidget(
+            icon: Icons.save,
+            title: 'Simpan Transaksi',
+            onTap: () async {
+              if (isEdit) {
+                controller.updateTransaction(transaction!);
+              } else {
+                controller.addTransaction();
+              }
+            },
           ),
         ],
       ),
