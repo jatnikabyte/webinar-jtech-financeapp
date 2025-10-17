@@ -24,11 +24,4 @@ class Utils {
       decimalDigits: 0,
     ).format(value);
   }
-
-  static String timeAgo(DateTime date) {
-    final diff = DateTime.now().difference(date);
-    if (diff.inDays > 1) return '${diff.inDays} days ago';
-    if (diff.inHours > 1) return '${diff.inHours} hours ago';
-    return '${diff.inMinutes} minutes ago';
-  }
 }

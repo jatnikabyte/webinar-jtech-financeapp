@@ -2,40 +2,29 @@ import 'package:flutter/material.dart';
 
 enum TransactionType { income, expense }
 
-extension TransactionTypeExtension on TransactionType {
-  String get value {
-    switch (this) {
-      case TransactionType.income:
-        return 'Pemasukan';
-      case TransactionType.expense:
-        return 'Pengeluaran';
-    }
-  }
+extension TransactionTypeX on TransactionType {
+  static const _labels = {
+    TransactionType.income: 'Pemasukan',
+    TransactionType.expense: 'Pengeluaran',
+  };
 
-  IconData get icon {
-    switch (this) {
-      case TransactionType.income:
-        return Icons.arrow_upward;
-      case TransactionType.expense:
-        return Icons.arrow_downward;
-    }
-  }
+  static const _icons = {
+    TransactionType.income: Icons.arrow_upward,
+    TransactionType.expense: Icons.arrow_downward,
+  };
 
-  Color get color {
-    switch (this) {
-      case TransactionType.income:
-        return Colors.green;
-      case TransactionType.expense:
-        return Colors.red;
-    }
-  }
+  static const _colors = {
+    TransactionType.income: Colors.green,
+    TransactionType.expense: Colors.red,
+  };
 
-  Color get backgroundColor {
-    switch (this) {
-      case TransactionType.income:
-        return Colors.green.shade50;
-      case TransactionType.expense:
-        return Colors.red.shade50;
-    }
-  }
+  static const _bgColors = {
+    TransactionType.income: Color(0xFFE8F5E9),
+    TransactionType.expense: Color(0xFFFFEBEE),
+  };
+
+  String get value => _labels[this]!;
+  IconData get icon => _icons[this]!;
+  Color get color => _colors[this]!;
+  Color get backgroundColor => _bgColors[this]!;
 }
