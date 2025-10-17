@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:webinar/core/enums/transaction_types.dart';
 import 'package:webinar/data/models/transaction_model.dart';
 import 'package:webinar/data/repositories/transaction_repository.dart';
 
@@ -30,7 +31,7 @@ class DashboardController extends GetxController {
         isLoading.value = false;
         Get.snackbar(
           'Error',
-          'Failed to load dashboard data: $error',
+          'Gagal ambil data dashboard: $error',
           snackPosition: SnackPosition.BOTTOM,
         );
       },
@@ -42,7 +43,7 @@ class DashboardController extends GetxController {
     double expense = 0.0;
 
     for (var transaction in transactions) {
-      if (transaction.type == 'income') {
+      if (transaction.type == TransactionType.income.name) {
         income += transaction.amount;
       } else {
         expense += transaction.amount;
