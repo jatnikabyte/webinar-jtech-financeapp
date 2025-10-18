@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:webinar/data/models/category_model.dart';
-import 'package:webinar/data/repositories/category_repository.dart';
+import '../../../data/models/category_model.dart';
+import '../../../data/repositories/category_repository.dart';
 
 class CategoryController extends GetxController {
   final CategoryRepository _categoryRepository = Get.find<CategoryRepository>();
@@ -15,10 +15,10 @@ class CategoryController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadCategories();
+    fetchCategories();
   }
 
-  void loadCategories() {
+  void fetchCategories() {
     isLoading.value = true;
     _categoryRepository.getAll().listen(
       (data) {

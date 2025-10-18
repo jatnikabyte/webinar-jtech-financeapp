@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:webinar/core/enums/transaction_types.dart';
-import 'package:webinar/data/models/transaction_model.dart';
-import 'package:webinar/data/repositories/transaction_repository.dart';
+import '../../../core/enums/transaction_types.dart';
+import '../../../data/models/transaction_model.dart';
+import '../../../data/repositories/transaction_repository.dart';
 
 class DashboardController extends GetxController {
   final TransactionRepository _transactionRepository =

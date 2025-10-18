@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 enum TransactionType { income, expense }
 
 extension TransactionTypeX on TransactionType {
-  static const _labels = {
+  static const Map _labels = {
     TransactionType.income: 'Pemasukan',
     TransactionType.expense: 'Pengeluaran',
   };
 
-  static const _icons = {
+  static const Map _icons = {
     TransactionType.income: Icons.arrow_upward,
     TransactionType.expense: Icons.arrow_downward,
   };
 
-  static const _colors = {
+  static const Map _colors = {
     TransactionType.income: Colors.green,
     TransactionType.expense: Colors.red,
   };
 
-  static const _bgColors = {
+  static const Map _bgColors = {
     TransactionType.income: Color(0xFFE8F5E9),
     TransactionType.expense: Color(0xFFFFEBEE),
   };

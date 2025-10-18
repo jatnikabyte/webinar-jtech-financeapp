@@ -13,8 +13,7 @@ import '../../../widgets/card_widget.dart';
 class TransactionFormView extends StatelessWidget {
   final TransactionModel? transaction;
 
-  TransactionFormView({super.key, this.transaction});
-  late final selectedDate = (transaction?.date ?? DateTime.now()).obs;
+  const TransactionFormView({super.key, this.transaction});
 
   @override
   Widget build(BuildContext context) {

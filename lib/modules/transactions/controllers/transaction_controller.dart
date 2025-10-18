@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webinar/data/models/category_model.dart';
-import 'package:webinar/data/models/transaction_model.dart';
-import 'package:webinar/data/repositories/category_repository.dart';
-import 'package:webinar/data/repositories/transaction_repository.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import '../../../data/models/category_model.dart';
+import '../../../data/models/transaction_model.dart';
+import '../../../data/repositories/category_repository.dart';
+import '../../../data/repositories/transaction_repository.dart';
 
 class TransactionController extends GetxController {
   final TransactionRepository _transactionRepository =
@@ -20,11 +20,11 @@ class TransactionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadTransactions();
-    loadCategories();
+    fetchTransactions();
+    fetchCategories();
   }
 
-  void loadTransactions() {
+  void fetchTransactions() {
     isLoading.value = true;
     _transactionRepository.getAll().listen(
       (data) {
@@ -42,7 +42,7 @@ class TransactionController extends GetxController {
     );
   }
 
-  void loadCategories() {
+  void fetchCategories() {
     _categoryRepository.getAll().listen(
       (data) {
         categories.value = data;

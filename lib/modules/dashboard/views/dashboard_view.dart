@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/helpers/transaction_helpers.dart';
 import '../../../modules/category/views/category_list_view.dart';
 import '../../../modules/dashboard/controllers/dashboard_controller.dart';
 import '../../../modules/transactions/views/transaction_list_view.dart';
 
 import '../../../core/enums/transaction_types.dart';
-import '../../../core/utils/utils.dart';
 import '../../../widgets/box_balance_widget.dart';
-import '../../../widgets/box_icon_widget.dart';
 import '../../../widgets/box_summary_widget.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/card_widget.dart';
+import '../../../widgets/list_tile_transaction_widget.dart';
 import '../../../widgets/no_transaction_yet_widget.dart';
-import '../../../widgets/text_currency_widget.dart';
 
 class DashboardView extends StatelessWidget {
   DashboardView({super.key});
@@ -24,9 +21,9 @@ class DashboardView extends StatelessWidget {
       body: Column(
         children: [
           Stack(children: [_buildGreetings(), _buildSummary()]),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           _buildRecentTransactions(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           _buildButtonAddTransaction(),
           SizedBox(height: 10),
           _buildButtonAddCategory(),
@@ -70,40 +67,13 @@ class DashboardView extends StatelessWidget {
                         padding: EdgeInsets.zero,
                         itemCount: controller.transactions.length,
                         itemBuilder: (context, i) {
-                          return ListTile(
-                            leading: BoxIconWidget(
-                              backgroundColor:
-                                  TransactionHelpers.backgroundColor(
-                                    controller.transactions[i].type,
-                                  ),
-                              color: TransactionHelpers.color(
-                                controller.transactions[i].type,
-                              ),
-                              icon: TransactionHelpers.icon(
-                                controller.transactions[i].type,
-                              ),
-                            ),
-                            title: Text(
-                              controller.transactions[i].categoryName,
-                            ),
-                            subtitle: Text(controller.transactions[i].notes),
-                            trailing: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                TextCurrencyMediumWidget(
-                                  number: controller.transactions[i].amount,
-                                  color: TransactionHelpers.color(
-                                    controller.transactions[i].type,
-                                  ),
-                                ),
-
-                                Text(
-                                  Utils.formatDate(
-                                    controller.transactions[i].date,
-                                  ),
-                                ),
-                              ],
-                            ),
+                          return ListTileTransactionWidget(
+                            amount: controller.transactions[i].amount,
+                            type: controller.transactions[i].type,
+                            categoryName:
+                                controller.transactions[i].categoryName,
+                            notes: controller.transactions[i].notes,
+                            date: controller.transactions[i].date,
                           );
                         },
                       ),

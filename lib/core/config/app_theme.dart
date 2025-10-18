@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData myTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.blueAccent,
       elevation: 0,
       foregroundColor: Colors.white,
     ),
-    useMaterial3: true,
-    brightness: Brightness.light,
     cardTheme: CardThemeData(color: Colors.white),
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.blueAccent,
